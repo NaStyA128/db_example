@@ -4,7 +4,7 @@ import MySQLdb.cursors
 
 def get_connection():
     connection = MySQLdb.connect(user='root',
-                                 passwd='123',
+                                 passwd='456756',
                                  db='books',
                                  cursorclass=MySQLdb.cursors.DictCursor)
     return connection
@@ -28,12 +28,12 @@ def select(**kwargs):
                 query += ' AND '
             query += str(i)
             query += ' = '
-            if type(kwargs[i]) == 'str':
-                query += kwargs[i]
-            else:
+            if type(kwargs[i]) == str:
                 query += '"'
                 query += str(kwargs[i])
                 query += '"'
+            else:
+                query += str(kwargs[i])
             j += 1
     print(query)
     cursor.execute(query)
@@ -41,8 +41,8 @@ def select(**kwargs):
 
 
 # insert_books([
-#     ('Book1', 'qwe-123'),
-#     ('Book2', 'qwe-1212'),
+#      ('Book1', 'qwe-123'),
+#      ('Book2', 'qwe-1212'),
 # ])
 
 
